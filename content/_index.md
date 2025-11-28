@@ -8,11 +8,11 @@ authors:
 affiliation: "CVIT, IIIT Hyderabad"
 authorLinks:
   - label: "Sainithin Artham"
-    url: "https://sainithin.com"
+    url: "https://sainithin-bit.github.io/Sainitin/"
   - label: "Avijit Dasgupta"
-    url: "https://avijitdasgupta.me"
+    url: "https://avijit9.github.io"
   - label: "Shankar Gangisetty"
-    url: "#"
+    url: "https://sites.google.com/site/shankarsetty/home"
   - label: "C. V. Jawahar"
     url: "https://faculty.iiit.ac.in/~jawahar/"
 links:
