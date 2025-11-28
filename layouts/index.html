@@ -42,6 +42,9 @@
       border-radius: var(--radius);
       padding: clamp(1.5rem, 3vw, 2.75rem);
     }
+    .hero {
+      position: relative;
+    }
     .hero h1 {
       font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 600;
@@ -55,13 +58,24 @@
       justify-content: center;
       margin-bottom: 1rem;
     }
+    .hero-title-wrapper {
+      text-align: center;
+      width: 100%;
+    }
+    .hero-logo {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      height: 42px;
+      width: auto;
+      opacity: 0.85;
+    }
     .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
+      text-align: center;
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
     }
     .meta strong { color: var(--text); }
     .pill-row {
@@ -165,23 +179,30 @@
         </div>
       </div>
       <div class="meta">
-        <span>
+        <div>
           {{- range $index, $author := .Params.authorLinks -}}
             {{- if gt $index 0 }}, {{ end -}}
+            {{- $label := $author.label -}}
+            {{- if lt $index 2 -}}
+              {{ $label = printf "%s*" $label }}
+            {{- end -}}
             {{- if $author.url -}}
-              <a href="{{ $author.url }}" target="_blank" rel="noopener" style="color: var(--text); text-decoration: underline;">{{ $author.label }}</a>
+              <a href="{{ $author.url }}" target="_blank" rel="noopener" style="color: var(--text); text-decoration: underline;">{{ $label }}</a>
             {{- else -}}
-              {{ $author.label }}
+              {{ $label }}
             {{- end -}}
           {{- end -}}
-        </span>
-        <span>{{ .Params.affiliation }} · WACV 2026</span>
+        </div>
+        <div>{{ .Params.affiliation }}</div>
+        <div>WACV 2026</div>
+        <div style="font-size:0.9rem;color:var(--muted);margin-top:0.4rem;">* Equal contribution</div>
       </div>
-      <div class="pill-row">
+      <div class="pill-row" style="justify-content: center;">
         {{ range .Params.links }}
           <a class="pill" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>
         {{ end }}
       </div>
+      <img class="hero-logo" src='{{ "assets/img/wacv_logo.png" | relURL }}' alt="WACV logo">
     </section>
 
     {{ with .Params.abstract }}
@@ -202,24 +223,32 @@
 
     <section class="glass cta">
       <div>
-        <div class="section-label">Collaborate</div>
-        <h3>{{ .Params.cta.title }}</h3>
+        <div class="section-label">Contact</div>
+        <h3>Get in touch</h3>
         <p style="color: var(--muted); max-width: 520px;">{{ .Params.cta.body }}</p>
+        <p style="color: var(--text); font-weight:600; margin-top:0.75rem;">Corresponding Author: <a href="mailto:avijit.dasgupta@research.iiit.ac.in" style="color:var(--primary); text-decoration:none;">avijit.dasgupta@research.iiit.ac.in</a></p>
       </div>
-      <div class="pill-row">
-        <a class="pill" href="{{ .Params.cta.primaryLink }}">{{ .Params.cta.primaryLabel }}</a>
-        <a class="pill" href="{{ .Params.cta.secondaryLink }}" target="_blank" rel="noopener">{{ .Params.cta.secondaryLabel }}</a>
-      </div>
+      {{ with .Params.cta.primaryLink }}
+      <a class="pill" href="{{ . }}" style="margin-top:0.75rem;">Email us</a>
+      {{ end }}
     </section>
 
     <section class="glass content">
       <div class="section-label">BibTeX</div>
-      <pre style="background:#f8f9fb;border:1px solid var(--border);border-radius:12px;padding:1.25rem;overflow-x:auto;font-size:0.9rem;color:#2f3545;">@inproceedings&#123;kim2018textualexplanationsselfdrivingvehicles,
-  title        = &#123;Textual Explanations for Self-Driving Vehicles&#125;,
-  author       = &#123;Jinkyu Kim and Anna Rohrbach and Trevor Darrell and John F. Canny and Zeynep Akata&#125;,
-  booktitle    = &#123;&#123;ECCV&#125; &#123;(2)&#125;&#125;,
-  year         = &#123;2018&#125;
+      <pre style="background:#f8f9fb;border:1px solid var(--border);border-radius:12px;padding:1.25rem;overflow-x:auto;font-size:0.9rem;color:#2f3545;">@inproceedings&#123;drivexplain2026,
+  title        = &#123;Distilling What and Why: Enhancing Driver Intention Prediction with MLLMs&#125;,
+  author       = &#123;Sainithin Artham, Avijit Dasgupta, Shankar Gangisetty, C. V. Jawahar&#125;,
+  booktitle    = &#123;WACV&#125;,
+  year         = &#123;2026&#125;
 &#125;</pre>
+    </section>
+
+    <section class="glass content">
+      <div class="section-label">License</div>
+      <p style="color:var(--muted); line-height:1.8;">
+        This website is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+        This means you are free to borrow the source code of this website, we just ask that you link back to this page in the footer.
+      </p>
     </section>
 
     <footer>

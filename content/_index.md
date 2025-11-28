@@ -43,10 +43,7 @@ sections:
       DriveXplain surpasses prior state-of-the-art on public benchmarks, while reducing unexplained false positives by 35%. Human evaluators consistently rate our rationales as more precise and trustworthy than baseline captioning models.
 
 cta:
-  title: "Collaborate with DriveXplain"
-  body: "We are partnering with AV teams, mobility startups, and research labs to deploy transparent intent prediction pipelines."
-  primaryLabel: "Email the team"
-  primaryLink: "mailto:research@cvit.iiit.ac.in"
-  secondaryLabel: "View GitHub"
-  secondaryLink: "https://github.com/avijit9/DriveXplain"
+  title: "Contact Us"
+  body: "Please feel free to reach us out."
+  primaryLink: "mailto:avijit.dasgupta@research.iiit.ac.in"
 ---
