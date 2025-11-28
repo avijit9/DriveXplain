@@ -1,0 +1,27 @@
+baseURL = 'https://avijit9.github.io/DriveXplain/'
+languageCode = 'en-us'
+title = 'DriveXplain — Distilling What & Why'
+canonifyURLs = true
+
+disableKinds = ['RSS', 'taxonomy']
+
+[params]
+  tagline = 'Distilling What & Why for driver intention prediction with multimodal large language models'
+  primaryColor = '#7F5BFF'
+  accentColor = '#45E8D0'
+  github = 'https://github.com/avijit9/DriveXplain'
+  contactEmail = 'research@cvit.iiit.ac.in'
+
+[pagination]
+  pagerSize = 6
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ['HTML']
+
+[frontmatter]
+  lastmod = ['lastmod', ':fileModTime', ':default']
