@@ -51,14 +51,19 @@
     }
     .brand-row {
       display: flex;
-      gap: 1rem;
       align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
       margin-bottom: 1rem;
       flex-wrap: wrap;
     }
     .brand-row img {
       height: 40px;
       width: auto;
+    }
+    .hero-title-wrapper {
+      flex: 1;
+      text-align: center;
     }
     .meta {
       display: flex;
@@ -160,20 +165,31 @@
       <p class="section-label">{{ .Site.Params.tagline }}</p>
       <div class="brand-row">
         <img src='{{ "assets/img/wacv_logo.png" | relURL }}' alt="WACV logo">
-        <img src='{{ "assets/img/iiit_logo.png" | relURL }}' alt="IIIT Hyderabad logo">
-      </div>
-      <h1>
+        <div class="hero-title-wrapper">
+          <h1>
         {{- with .Params.heroTitle -}}
           {{ . | safeHTML }}
         {{- else -}}
           Distilling <em>What</em> &amp; <em>Why</em> for Trustworthy Driver Intention Prediction
         {{- end -}}
-      </h1>
+          </h1>
+        </div>
+      </div>
       <div class="meta">
-        <span>{{ delimit .Params.authors ", " }}</span>
+        <span>
+          {{- range $index, $author := .Params.authorLinks -}}
+            {{- if gt $index 0 }}, {{ end -}}
+            {{- if $author.url -}}
+              <a href="{{ $author.url }}" target="_blank" rel="noopener" style="color: var(--text); text-decoration: underline;">{{ $author.label }}</a>
+            {{- else -}}
+              {{ $author.label }}
+            {{- end -}}
+          {{- end -}}
+        </span>
         <span>{{ .Params.affiliation }} · WACV 2026</span>
       </div>
       <div class="pill-row">
+        <span style="color: var(--muted); font-size: 0.9rem; font-weight: 500;">Resources</span>
         {{ range .Params.links }}
           <a class="pill" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>
         {{ end }}

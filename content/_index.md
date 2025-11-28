@@ -6,6 +6,15 @@ authors:
   - Shankar Gangisetty
   - C. V. Jawahar
 affiliation: "CVIT, IIIT Hyderabad"
+authorLinks:
+  - label: "Sainithin Artham"
+    url: "https://sainithin.com"
+  - label: "Avijit Dasgupta"
+    url: "https://avijitdasgupta.me"
+  - label: "Shankar Gangisetty"
+    url: "#"
+  - label: "C. V. Jawahar"
+    url: "https://faculty.iiit.ac.in/~jawahar/"
 links:
   - label: "Paper"
     url: "https://arxiv.org/abs/xxxx.xxxxx"
