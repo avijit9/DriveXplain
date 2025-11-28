@@ -6,7 +6,6 @@ canonifyURLs = true
 disableKinds = ['RSS', 'taxonomy']
 
 [params]
-  tagline = 'Distilling What & Why for driver intention prediction with multimodal large language models'
   primaryColor = '#7F5BFF'
   accentColor = '#45E8D0'
   github = 'https://github.com/avijit9/DriveXplain'
