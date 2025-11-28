@@ -52,18 +52,8 @@
     .brand-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      justify-content: center;
       margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    .brand-row img {
-      height: 40px;
-      width: auto;
-    }
-    .hero-title-wrapper {
-      flex: 1;
-      text-align: center;
     }
     .meta {
       display: flex;
@@ -164,7 +154,6 @@
     <section class="glass hero">
       <p class="section-label">{{ .Site.Params.tagline }}</p>
       <div class="brand-row">
-        <img src='{{ "assets/img/wacv_logo.png" | relURL }}' alt="WACV logo">
         <div class="hero-title-wrapper">
           <h1>
         {{- with .Params.heroTitle -}}
