@@ -1,6 +1,6 @@
 ---
 title: "Distilling What & Why: Enhancing Driver Intention Prediction with MLLMs"
-subtitle: "Bridging human reasoning and autonomous driving decisions for WACV 2026"
+heroTitle: "Distilling <em>What</em> &amp; <em>Why</em> for Trustworthy Driver Intention Prediction"
 date: 2025-11-28
 authors:
   - Sainithin Artham*
@@ -13,20 +13,14 @@ links:
     url: "https://arxiv.org/abs/xxxx.xxxxx"
   - label: "Code"
     url: "https://github.com/avijit9/DriveXplain"
-  - label: "Dataset"
-    url: "https://drivexplain.ai/dataset"
   - label: "Poster"
     url: "https://drivexplain.ai/poster.pdf"
-metrics:
-  - title: "Accuracy"
-    value: "93.4%"
-    detail: "Intention classification on NuScenes"
-  - title: "Explainability"
-    value: "2.1×"
-    detail: "Improvement in human rationale agreement"
-  - title: "Latency"
-    value: "48 ms"
-    detail: "Real-time inference on embedded GPU"
+abstract: |
+  Predicting a drivers' intent (e.g., turns, lane changes) is a critical capability for modern Advanced Driver Assistance Systems (ADAS). While recent Multimodal Large Language Models (MLLMs) show promise in general vision-language tasks, we find that zero-shot MLLMs still lag behind domain-specific approaches for Driver Intention Prediction (DIP). To address this, we introduce narratorname, a zero-shot framework based on MLLMs that leverages rich visual cues such as optical flow and road semantics to automatically generate both intention maneuver (*what*) and rich natural language explanations (*why*). These maneuver–explanation pairs are then distilled into a compact MLLM, which jointly learns to predict intentions and corresponding explanations. We show that incorporating explanations during training leads to substantial gains over models trained solely on labels, as distilling explanations instills reasoning capabilities by enabling the model to understand not only *what* decisions to make but also *why* those decisions are made.
+
+  Comprehensive experiments across structured (Brain4Cars, AIDE) and unstructured (DAAD) datasets demonstrate that our approach achieves state-of-the-art results in DIP tasks, outperforming zero-shot and domain-specific baselines. We also present ablation studies to evaluate key design choices in our framework.
+
+  This work sets a direction for more explainable and generalizable intention prediction in autonomous driving systems.
 sections:
   - heading: "Why DriveXplain?"
     body: |

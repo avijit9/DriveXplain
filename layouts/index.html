@@ -58,11 +58,18 @@
       line-height: 1.08;
       margin-bottom: 1.2rem;
     }
-    .hero p.lead {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 62ch;
-      margin-bottom: 1.5rem;
+    .brand-row {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      opacity: 0.85;
+    }
+    .brand-row img {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
     }
     .meta {
       display: flex;
@@ -177,8 +184,17 @@
   <main class="page">
     <section class="glass hero">
       <p class="section-label">{{ .Site.Params.tagline }}</p>
-      <h1>{{ .Title }}</h1>
-      <p class="lead">{{ .Params.subtitle }}</p>
+      <div class="brand-row">
+        <img src='{{ "assets/img/wacv.svg" | relURL }}' alt="WACV logo">
+        <img src='{{ "assets/img/iiit.svg" | relURL }}' alt="IIIT Hyderabad logo">
+      </div>
+      <h1>
+        {{- with .Params.heroTitle -}}
+          {{ . | safeHTML }}
+        {{- else -}}
+          Distilling <em>What</em> &amp; <em>Why</em> for Trustworthy Driver Intention Prediction
+        {{- end -}}
+      </h1>
       <div class="meta">
         <span>{{ delimit .Params.authors ", " }}</span>
         <span>{{ .Params.affiliation }} · WACV 2026</span>
@@ -190,18 +206,14 @@
       </div>
     </section>
 
-    <section class="glass">
-      <div class="section-label">Key Metrics</div>
-      <div class="grid three">
-        {{ range .Params.metrics }}
-          <div class="stat">
-            <h3>{{ .title }}</h3>
-            <p>{{ .value }}</p>
-            <span>{{ .detail }}</span>
-          </div>
-        {{ end }}
+    {{ with .Params.abstract }}
+    <section class="glass content">
+      <div class="section-label">Abstract</div>
+      <div class="prose">
+        {{ . | markdownify }}
       </div>
     </section>
+    {{ end }}
 
     <section class="glass content">
       {{ range .Params.sections }}
