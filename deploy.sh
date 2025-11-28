@@ -19,9 +19,20 @@ if ! git -C "$ROOT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 1
 fi
 
+CURRENT_BRANCH="$(git -C "$ROOT_DIR" rev-parse --abbrev-ref HEAD)"
+
 if [[ -n "$(git -C "$ROOT_DIR" status --porcelain)" ]]; then
-  echo "✋ Please commit or stash your working tree changes before deploying."
-  exit 1
+  echo "💾 Detected local changes on $CURRENT_BRANCH. Committing before deploy..."
+  git -C "$ROOT_DIR" add -A
+  if git -C "$ROOT_DIR" diff --cached --quiet; then
+    echo "ℹ️ Nothing to commit after staging."
+  else
+    source_msg="chore: update site $(date '+%Y-%m-%d %H:%M:%S %Z')"
+    git -C "$ROOT_DIR" commit -m "$source_msg"
+  fi
+  git -C "$ROOT_DIR" push origin "$CURRENT_BRANCH"
+else
+  echo "ℹ️ Working tree clean on $CURRENT_BRANCH."
 fi
 
 echo "🚀 Building site with Hugo..."
