@@ -9,20 +9,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: dark;
-      --bg: radial-gradient(circle at 10% 20%, rgba(127,91,255,0.3), transparent 50%),
-             radial-gradient(circle at 80% 0%, rgba(69,232,208,0.25), transparent 45%),
-             #04050a;
-      --surface: rgba(10, 12, 24, 0.9);
-      --glass: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.08);
-      --text: #f6f7fb;
-      --muted: #9aa4c9;
-      --primary: {{ .Site.Params.primaryColor | default "#7F5BFF" }};
-      --accent: {{ .Site.Params.accentColor | default "#45E8D0" }};
-      --radius: 28px;
+      --bg: #f7f7fb;
+      --surface: #ffffff;
+      --border: #e3e6ef;
+      --text: #1f2430;
+      --muted: #5c6274;
+      --primary: {{ .Site.Params.primaryColor | default "#4b5fe2" }};
+      --accent: {{ .Site.Params.accentColor | default "#4bb5a6" }};
+      --radius: 18px;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
@@ -31,50 +31,39 @@
       padding: clamp(1.5rem, 4vw, 4rem);
     }
     .page {
-      max-width: 1200px;
-      margin: 0 auto 4rem;
+      max-width: 1080px;
+      margin: 0 auto 3rem;
       display: grid;
-      gap: 2.5rem;
-      position: relative;
+      gap: 2rem;
     }
     .glass {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: clamp(1.75rem, 4vw, 3rem);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 25px 70px rgba(3, 4, 10, 0.45);
-    }
-    .glass::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 60%);
-      pointer-events: none;
+      padding: clamp(1.5rem, 3vw, 2.75rem);
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      line-height: 1.08;
-      margin-bottom: 1.2rem;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--text);
     }
     .brand-row {
       display: flex;
-      gap: 1.25rem;
+      gap: 1rem;
       align-items: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       flex-wrap: wrap;
-      opacity: 0.85;
     }
     .brand-row img {
-      height: 42px;
+      height: 40px;
       width: auto;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
     }
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem 2rem;
+      gap: 0.75rem 1.5rem;
       color: var(--muted);
       font-size: 0.95rem;
       margin-bottom: 1.25rem;
@@ -86,45 +75,30 @@
       gap: 0.75rem;
     }
     .pill {
-      padding: 0.65rem 1.3rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: var(--glass);
+      background: #f4f5fb;
       color: var(--text);
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, border 0.2s ease;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
     }
-    .pill:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .pill:hover { background: #e9ecf8; }
     .section-label {
       text-transform: uppercase;
-      letter-spacing: 0.25em;
-      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1rem;
     }
     .grid {
       display: grid;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
-    @media (min-width: 800px) {
-      .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (min-width: 768px) {
       .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    .stat {
-      padding: 1.25rem;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--glass);
-    }
-    .stat h3 {
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .stat p { font-size: 1.25rem; font-weight: 600; }
-    .stat span { color: var(--muted); font-size: 0.95rem; }
     .content h2 {
       font-size: 1.6rem;
       margin-bottom: 0.75rem;
