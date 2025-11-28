@@ -156,6 +156,21 @@
       letter-spacing: 0.25em;
       margin-bottom: 1rem;
     }
+    @media (max-width: 768px) {
+      .image-caption-layout {
+        flex-direction: column !important;
+        gap: 0 !important;
+      }
+      .image-caption-layout > div:first-child {
+        flex: 1 1 100% !important;
+      }
+      .image-caption-layout > div:nth-child(2) {
+        display: none !important;
+      }
+      .image-caption-layout > div:last-child {
+        padding-top: 1rem !important;
+      }
+    }
     @media (max-width: 640px) {
       body { padding: 1.25rem; }
       .hero h1 { font-size: 2rem; }
@@ -210,6 +225,36 @@
       <div class="section-label">Abstract</div>
       <div class="prose" style="text-align: justify; text-justify: inter-word;">
         {{ . | markdownify }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.problemStatement }}
+    <section class="glass content">
+      <div class="section-label">{{ .heading }}</div>
+      <div class="image-caption-layout" style="display: flex; gap: 0; align-items: stretch; margin: 2rem 0;">
+        <div style="flex: 0 0 35%;">
+          <img src='{{ .figure | relURL }}' alt="Teaser diagram" style="border: 2px solid #000000; border-radius: 12px; width: 100%; height: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        </div>
+        <div style="width: 1px; background-color: #d0d0d0; margin: 0 1.5rem;"></div>
+        <div style="flex: 1; padding-top: 2rem;">
+          <p class="prose" style="color: var(--text); font-size: 0.95rem; text-align: justify; margin: 0;">{{ .caption | markdownify }}</p>
+        </div>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.drivexplain }}
+    <section class="glass content">
+      <div class="section-label">{{ .heading }}</div>
+      <div class="image-caption-layout" style="display: flex; gap: 0; align-items: stretch; margin: 2rem 0; flex-direction: row-reverse;">
+        <div style="flex: 0 0 50%;">
+          <img src='{{ .figure | relURL }}' alt="Main diagram" style="border: 2px solid #000000; border-radius: 12px; width: 100%; height: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        </div>
+        <div style="width: 1px; background-color: #d0d0d0; margin: 0 2rem;"></div>
+        <div style="flex: 1; padding-top: 2rem;">
+          <p class="prose" style="color: var(--text); font-size: 0.95rem; text-align: justify; margin: 0;">{{ .caption | markdownify }}</p>
+        </div>
       </div>
     </section>
     {{ end }}
