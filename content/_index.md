@@ -1,7 +1,5 @@
 ---
-title: "Distilling What & Why: Enhancing Driver Intention Prediction with MLLMs"
-heroTitle: "Distilling <em>What</em> &amp; <em>Why</em> for Trustworthy Driver Intention Prediction"
-date: 2025-11-28
+heroTitle: "Distilling <em>What</em> & <em>Why</em>: Enhancing Driver Intention Prediction with MLLMs"
 authors:
   - Sainithin Artham*
   - Avijit Dasgupta*
